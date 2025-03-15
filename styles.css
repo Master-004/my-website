@@ -1,3 +1,40 @@
+/* Default styles */
+#nav-menu {
+    display: none; /* Hide menu by default on smaller screens */
+  }
+  
+  #nav-toggle {
+    display: block; /* Show toggle button on smaller screens */
+  }
+  
+  /* Dropdown menu styles */
+  #dropdown-menu {
+    display: none; /* Hide dropdown menu by default */
+    transform: translateY(-100%); /* Position above the viewport */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Show menu on larger screens */
+  @media (min-width: 768px) {
+    #nav-menu {
+      display: flex; /* Show menu on larger screens */
+    }
+  
+    #nav-toggle {
+      display: none; /* Hide toggle button on larger screens */
+    }
+  
+    #dropdown-menu {
+      display: none; /* Hide dropdown menu on larger screens */
+    }
+  }
+  
+  /* Show dropdown menu when toggled */
+  #dropdown-menu.show {
+    display: block; /* Show dropdown menu */
+    transform: translateY(0); /* Slide down into view */
+  }
+
 .zoom-effect {
   position: relative;
   display: inline-block;
@@ -25,7 +62,6 @@
 
 .zoom-effect:hover::before {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(0, 0, 0, 0.3); /* Change border color on hover */
 }
 /* Shadow hover */
 .flip-card1 {
@@ -177,6 +213,26 @@ ul li {
   overflow-y: auto; /* Enable scrolling if content exceeds height */
 }
 
+/* Put this in to check the mobile compatibility */
+/* Default styles */
+body {
+  font-size: 16px; /* Default font size */
+}
+
+h2 {
+  font-size: 2rem; /* Default font size for titles */
+}
+
+h3 {
+  font-size: 1.5rem; /* Default font size for subtitles */
+}
+
+p,
+ul,
+li {
+  font-size: 1rem; /* Default font size for paragraphs and list items */
+}
+
 /* Mobile friendly */
 @media (max-width: 768px) {
   .grid {
@@ -184,24 +240,26 @@ ul li {
     gap: 10px;
   }
 
-  .flip-card {
+  .flip-card,
+  .flip-card1 {
     height: 300px; /* Adjusted height for smaller screens */
     margin-bottom: 20px; /* Add space between cards */
   }
 
   .flip-card-front,
-  .flip-card-back {
+  .flip-card-back,
+  .flip-card-front1,
+  .flip-card-back1 {
     max-height: 300px; /* Set a maximum height */
   }
 
   .flip-card h2,
   .flip-card1 h3 {
-    font-size: 1rem;
+    font-size: 1.5rem; /* Increase font size for titles on smaller screens */
   }
 
   .flip-card ul,
   .flip-card1 ul {
-    font-size: 0.875rem;
+    font-size: 1.25rem; /* Increase font size for list items on smaller screens */
   }
-
 }

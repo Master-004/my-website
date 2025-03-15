@@ -1,5 +1,7 @@
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toby's Portfolio</title>
     <link
       rel="stylesheet"
@@ -17,7 +19,6 @@
       function flipCard1(card) {
         card.classList.toggle('flipped1');
       }
-    
     </script>
 
     <style>
@@ -30,7 +31,10 @@
     <nav class="bg-gray-900 py-4">
       <div class="container mx-auto flex justify-between items-center px-8">
         <h1 class="text-white text-2xl font-bold">Toby's Portfolio</h1>
-        <ul class="flex space-x-4 text-white">
+        <button id="nav-toggle" class="text-white md:hidden">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="nav-menu" class="hidden md:flex space-x-4 text-white">
           <li><a href="#about" class="hover:text-blue-400">About Me</a></li>
           <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
           <li><a href="#resume" class="hover:text-blue-400">Resume</a></li>
@@ -38,7 +42,65 @@
           <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
         </ul>
       </div>
+      <div id="dropdown-menu" class="hidden md:hidden bg-gray-900 text-white">
+        <ul class="flex flex-col space-y-2 p-4">
+          <li>
+            <a
+              href="#about"
+              class="hover:text-blue-400"
+              style="padding-left: 60px"
+            >
+              About Me
+            </a>
+          </li>
+          <li>
+            <a
+              href="#projects"
+              class="hover:text-blue-400"
+              style="padding-left: 60px"
+            >
+              Projects
+            </a>
+          </li>
+          <li>
+            <a
+              href="#resume"
+              class="hover:text-blue-400"
+              style="padding-left: 60px"
+            >
+              Resume
+            </a>
+          </li>
+          <li>
+            <a
+              href="#moreabout"
+              class="hover:text-blue-400"
+              style="padding-left: 60px"
+            >
+              Why Me
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="hover:text-blue-400"
+              style="padding-left: 60px"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
+
+    <script>
+      document
+        .getElementById('nav-toggle')
+        .addEventListener('click', function () {
+          var dropdownMenu = document.getElementById('dropdown-menu');
+          dropdownMenu.classList.toggle('show');
+        });
+    </script>
 
     <section
       class="py-12 flex flex-col items-center text-center text-white bg-gray-800"
