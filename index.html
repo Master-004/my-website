@@ -1,11 +1,26 @@
 <html>
     <head>
 <title>Toby's Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+
     </head>
 
     <body>
 
         <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            function flipCard(card) {
+    card.classList.toggle("flipped");
+
+    
+}function flipCard1(card) {
+    card.classList.toggle("flipped1");
+}
+
+        </script>
+        
+
         <style>
             :root {
                 --profile-pic-size: 150px; /* Adjust the size as needed */
@@ -20,10 +35,16 @@
                     <li><a href="#about" class="hover:text-blue-400">About Me</a></li>
                     <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
                     <li><a href="#resume" class="hover:text-blue-400">Resume</a></li>
+                    <li><a href="#moreabout" class="hover:text-blue-400">Why Me</a></li>
                     <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
                     
                 </div>
         </nav>
+
+       
+        
+        
+
         
         <section class="py-12 flex flex-col items-center text-center text-white bg-gray-800">
             <img src="images\Toby-Small-Profile.jpg" alt="Toby's Profile Picture" class="rounded-full w-48 h-48 object-cover border-4 border-gray-900 shadow-lg">
@@ -35,35 +56,101 @@
         
         <!-- About Me -->
         <section id="about" class="py-16 px-6 bg-gray-700 text-center text-white">
+            <br/>
             <h2 class="text-3xl font-bold">About Me</h2>
-            <p class="mt-4 max-w-2xl mx-auto">
-                I'm Toby, a dedicated Information Systems student with a passion for data, problem-solving, and technology. As a member of multiple honor societies and the Association for Information Systems, I am continuously learning and seeking new challenges. I have a strong foundation in full-stack development, data analytics, and project management.
+            
+                <!-- Personal Introduction Paragraph -->
+            <p class="text-lg max-w-2xl text-left mx-auto mt-4">
+                Hi, I'm Toby! I'm a passionate Information Systems enthusiast with a deep interest in data analysis, technology, and solving real-world problems. As a dedicated student, I am constantly seeking opportunities to grow, collaborate, and apply my skills in creative ways. Whether it's developing software solutions, analyzing complex data, or leading projects, I'm committed to making a meaningful impact.
             </p>
-        </section>
+            </section>
+     
+            
+
         
-        <!-- Projects -->
-        <section id="projects" class="py-16 px-6 bg-gray-700 text-center text-white">
-            <h2 class="text-3xl font-bold">Projects</h2>
-        
-            <div class="flex flex-wrap justify-center gap-6 mt-6">
-                <!-- Sample Project Card -->
-                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center w-100">
-                    <h3 class="text-xl font-semibold">Project Title</h3>
-                    <p class="text-gray-300 mt-2">Brief description of the project and its impact.</p>
-                    <a href="#" class="text-blue-400 underline mt-2 inline-block">View Project</a>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center w-100">
-                    <h3 class="text-xl font-semibold">Project Title</h3>
-                    <p class="text-gray-300 mt-2">Brief description of the project and its impact.</p>
-                    <a href="#" class="text-blue-400 underline mt-2 inline-block">View Project</a>
-                </div>
-                <div class="bg-gray-900 p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center w-100">
-                    <h3 class="text-xl font-semibold">Project Title</h3>
-                    <p class="text-gray-300 mt-2">Brief description of the project and its impact.</p>
-                    <a href="#" class="text-blue-400 underline mt-2 inline-block">View Project</a>
-                </div>             
+            <section id="projects" class="py-16 px-6 bg-gray-700 text-white">
+                <h2 class="text-3xl font-bold text-center mb-8">My Projects</h2>
+                <p class="text-center">Click on these cards to learn more</p>
+                <br/>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+<div class="flip-card zoom-effect" onclick="flipCard(this)">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <br/>
+            <h2 class="text-xl font-semibold">BYU Fall Intex 2024</h2>
+            <br/>
+            <p>Full-Stack Web App</p>
+            <p>for Turtle Shelter Project</p>
+        </div>
+        <div class="flip-card-back">
+            <h3 class="text-xl font-semibold">BYU Fall Intex 2024</h3>
+            <br>
+            <div class="list-disc ml-5">
+                <ul class="list-disc list-inside text-left">
+                    <li>Developed a <b>full-stack web app</b> to analyze homelessness trends (2017-2022) with CRUD functionality.</li>
+                    <li>Utilized <b>Node.js, Express, Knex, and SQL</b> for backend development.</li>
+                    <li>Hosted the project on <b>AWS with Elastic Beanstalk</b>.</li>
+                    <li>Designed interactive charts & dashboard using <b>Tableau and Pandas</b>.</li>
+                </ul>
             </div>
-        </section>
+        </div>
+    </div>
+</div>
+
+            
+                   <!-- Project Card 2 -->
+<div class="flip-card zoom-effect" onclick="flipCard(this)">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <br/>
+            <h2 class="text-xl font-semibold">AirBnB Renovation Dashboard</h2>
+            <br/>
+            <p>Interactive Dashboard</p>
+            <p>for Basement Renovation Analysis</p>
+        </div>
+        <div class="flip-card-back">
+            <h3 class="text-xl font-semibold">AirBnB Renovation Dashboard</h3>
+            <br>
+            <div class="list-disc ml-5">
+                <ul class="list-disc list-inside text-left">
+                    <li>Created an interactive <b>Tableau dashboard</b> to analyze renovation feasibility using AirBnB price comparisons.</li>
+                    <li>Utilized <b>Excel</b> data for detailed insights, including <b>bar charts and filtering</b> by neighborhood.</li>
+                    <li>Published on <b>Tableau Public</b> for easy access and sharing.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+            
+                   <!-- Project Card 3 -->
+<div class="flip-card zoom-effect" onclick="flipCard(this)">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <br/>
+            <h2 class="text-xl font-semibold">Mission Nutrition</h2>
+            <br/>
+            <p>Collaborative Team Project</p>
+            <p>for Missionary Meal Planning</p>
+        </div>
+        <div class="flip-card-back">
+            <h3 class="text-xl font-semibold">Mission Nutrition</h3>
+            <br>
+            <div class="list-disc ml-5">
+                <ul class="list-disc list-inside text-left">
+                    <li>Developed a <b>meal planning app</b> for missionaries using <b>React, Dotnet</b>, and <b>Figma</b> for UI/UX design.</li>
+                    <li>Collaborated using <b>GitHub and Slack</b> with Scrum methodology to prioritize and pivot features.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    <!-- Add more cards as needed -->
+                </div>
+            </section>
         
 
              
@@ -71,14 +158,95 @@
         <section id="resume" class="py-16 px-6 bg-gray-700 text-white text-center">
             <h2 class="text-3xl font-semibold">Resume</h2>
             <p class="mt-4">Check out my resume below:</p>
-            <a href="images\Toby Alder - Resume.pdf" class="mt-4 inline-block px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600" target="_blank">Download Resume</a>
+            <a href="TobyAlderResume.pdf" class="mt-4 inline-block px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600" target="_blank">Download Resume</a>
+        </section>
+
+        <section id="moreabout" class="py-16 px-6 bg-gray-700 text-white">
+            <h2 class="text-3xl font-bold text-center">Why Me</h2>
+            <br />
+            <p class="text-center">Click on these cards to learn more</p>
+            <br/>
+            
+            <div class="grid grid-cols-3 gap-4">
+        
+                <!-- More about me Section -->
+        <!-- Offer Card 1 -->
+        <div class="flip-card1" onclick="flipCard1(this)">
+            <div class="flip-card-inner1 shadow-effect">
+                <div class="flip-card-front1">
+                    <h3 class="text-xl font-semibold">What I Offer</h3>
+                    
+                </div>
+                <div class="flip-card-back1">
+                    <h3 class="text-xl font-semibold">What I Offer</h3>
+                    <br/>
+                    <ul class="list-disc ml-6 space-y-2 text-left">
+                        <li><strong>Strong Technical Skills:</strong> Experienced in Node.js, Express, SQL, Tableau, Pandas, and AWS.</li>
+                        <li><strong>Analytical Expertise:</strong> Skilled in data analysis, visualization, and translating insights into actionable strategies.</li>
+                        <li><strong>Leadership & Collaboration:</strong> Actively contribute in team environments, having served in leadership roles such as a Teaching Assistant, Eagle Scout, and District Leader.</li>
+                        <li><strong>Problem-Solving:</strong> I approach challenges with a positive, growth-minded attitude, and enjoy finding innovative solutions.</li>
+                        <li><strong>Continuous Learning:</strong> Always looking for new technologies and tools to enhance my skills and stay ahead of the curve.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+                
+
+                <!-- Values Card 2 -->
+                <div class="flip-card1" onclick="flipCard1(this)">
+                    <div class="flip-card-inner1 shadow-effect">
+                        <div class="flip-card-front1">
+                            <h3 class="text-xl font-semibold">My Values and Career Aspirations</h3>
+                            
+                        </div>
+                        <div class="flip-card-back1">
+                            <h3 class="text-xl font-semibold">My Values and Career Aspirations</h3>
+                            <br/>
+                            <p class="text-lg text-left">
+                                I believe that collaboration, continuous learning, and perseverance are key to personal and professional growth. I’m passionate about contributing to projects that make a tangible difference and working with teams that value diversity, creativity, and innovation.
+                            </p>
+                            <p class="text-lg mt-4 text-left">
+                                My career goal is to leverage my background in Information Systems to drive technological advancements and contribute to impactful projects that improve lives and communities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work best Card 3 -->
+                <div class="flip-card1" onclick="flipCard1(this)">
+                    <div class="flip-card-inner1 shadow-effect">
+                        <div class="flip-card-front1">
+                            <h3 class="text-xl font-semibold">How I Work Best</h3>   
+                        </div>
+                        <div class="flip-card-back1">
+                            <h3 class="text-xl font-semibold">How I Work Best</h3>
+                            <br/>
+                            <ul class="list-disc ml-6 space-y-2 text-left">
+                                <li><strong>Collaborative & Communicative:</strong> I enjoy working in teams where knowledge-sharing and open discussions lead to creative problem-solving.</li>
+                                <li><strong>Adaptable & Growth-Oriented:</strong> Whether in structured or dynamic environments, I embrace challenges and see them as opportunities to learn and innovate.</li>
+                                <li><strong>Detail-Oriented, but Big-Picture Focused:</strong> I balance technical precision with a strategic mindset to ensure solutions are both effective and scalable.</li>
+                                <li><strong>Proactive & Solution-Driven:</strong> I take ownership of my work, anticipate roadblocks, and find ways to keep projects moving forward.</li>
+                                <li><strong>Positive & Supportive Team Member:</strong> I believe a great work culture is built on encouragement, respect, and shared success.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
         </section>
         
+        
+        
+        
+        
         <!-- Contact Section -->
-        <section id="contact" class="py-16 px-6 bg-gray-800 text-center text-white">
+        <section id="contact" class="py-16 px-6 bg-gray-900 text-center text-white">
             <h2 class="text-3xl font-semibold">Contact Me</h2>
-            <p class="text-gray-400 mt-2">Feel free to reach out via email: <a href="mailto:salder004@gmail.com" class="text-accent">saler004@gmail.com</a></p>
-            <p class="text-gray-400 mt-2">Let's connect on LinkedIn!: <a href="https://www.linkedin.com/in/salder004/" class="text-blue-400 underline" target="_blank">Toby Alder</a></p>
+            <br/>
+            <p class="text-gray-400 mt-2">Feel free to reach out via email: salder004@gmail.com
+              </p>
+            <p class="text-gray-400 mt-2"><b>Let's connect on LinkedIn!</b> <a href="https://www.linkedin.com/in/salder004/" class="text-blue-400 underline" target="_blank"><i class="fa-brands fa-linkedin fa-2xl" style="color: #737b89;"></i></a>  </p>
+            <!-- <p class="text-gray-400 mt-2">Check out my github: <a href="https://github.com/Master-004" class="text-blue-400 underline" target="_blank"><i class="fa-brands fa-github fa-2xl" style="color: #737b89;"></i></a></p> -->
             
         </section>
         
