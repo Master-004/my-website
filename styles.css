@@ -1,43 +1,58 @@
 .zoom-effect {
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  position: relative;
+  display: inline-block;
+  background-color: #111827; /* Initial background color */
+  transition: background-color 0.3s ease; /* Smooth transition */
+  border-radius: 10px; /* Add this line to round the corners */
 }
 
 .zoom-effect:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  background-color: #0d141e; /* Darker background color on hover */
 }
 
+.zoom-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px; /* Add this line to round the corners */
+  z-index: -1; /* Place behind the content */
+  border: 2px solid transparent; /* Initial border */
+  box-sizing: border-box; /* Include border in element's dimensions */
+}
+
+.zoom-effect:hover::before {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(0, 0, 0, 0.3); /* Change border color on hover */
+}
 /* Shadow hover */
-/* Initial state with smooth transition for shadow */
 .flip-card1 {
   transition: box-shadow 0.4s ease-out;
 }
-
-/* Hover effect with shadow */
 .shadow-effect:hover {
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Adds the shadow */
 }
-
 /* list */
 ul {
   list-style-position: outside; /* Keeps the bullet outside the text */
   padding-left: 1.5rem; /* Adjust to control the space from the left for bullets */
 }
-
 ul li {
   text-indent: -1.5rem; /* Pulls the text to the left so it's aligned properly */
   padding-left: 1.5rem; /* Controls the indentation of the text */
 }
-
 /* new stuff for flipping the project cards */
 .flip-card {
   background-color: transparent;
   width: 100%;
-  min-height: 275px;
+  height: 450px; /* Set a fixed height */
   perspective: 1000px; /* Keeps the 3D effect */
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
-
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -45,13 +60,12 @@ ul li {
   transform-style: preserve-3d;
   transition: transform 0.6s ease-in-out;
 }
-
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
 }
-
 /* Front and Back Card Styles */
-.flip-card-front {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -63,44 +77,38 @@ ul li {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  text-align: center; /* Ensure text is centered */
 }
 .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-/* Keep the same front color */
 .flip-card-front {
-  background: #111827; /* Keep the original front color */
+  background: #111827;
   color: #e5e7eb;
-  /* Keep the text readable */
 }
 
-/* Keep the same back color */
+.flip-card-front:hover {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
 .flip-card-back {
-  background: #cbd5e1; /* Keep the original blue shade */
+  background: #cbd5e1;
   color: black;
-  transform: rotateY(180deg); /* Ensures it's hidden initially */
+  transform: rotateY(180deg);
 }
-
 /* Flip the Why Me section */
 .flip-card1 {
   background-color: transparent;
   width: 100%;
-  min-height: 500px;
+  height: 450px; /* Set a fixed height */
+  padding: 20px;
   perspective: 1000px; /* Keeps the 3D effect */
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
-
 .flip-card-inner1 {
   position: relative;
   width: 100%;
@@ -108,13 +116,12 @@ ul li {
   transform-style: preserve-3d;
   transition: transform 0.6s ease-in-out;
 }
-
 .flip-card1.flipped1 .flip-card-inner1 {
   transform: rotateY(180deg);
 }
-
 /* Front and Back Card Styles */
-.flip-card-front1 {
+.flip-card-front1,
+.flip-card-back1 {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -126,34 +133,75 @@ ul li {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  text-align: center; /* Ensure text is centered */
 }
 .flip-card-back1 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
-/* Keep the same front color */
 .flip-card-front1 {
-  background: linear-gradient(
-    to bottom,
-    #111827,
-    #374151
-  ); /* Keep the original front color */
+  background: linear-gradient(to bottom, #111827, #374151);
+  /* Keep the original front color */
   color: white; /* Keep the text readable */
 }
-
-/* Keep the same back color */
 .flip-card-back1 {
-  background: #cbd5e1; /* Keep the original blue shade */
+  background: #cbd5e1;
   color: black;
-  transform: rotateY(180deg); /* Ensures it's hidden initially */
+  transform: rotateY(180deg);
+}
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.flip-card,
+.flip-card1 {
+  height: 475px; /* Maintain fixed height */
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-inner,
+.flip-card-inner1 {
+  height: 100%; /* Ensure inner content takes full height */
+}
+
+.flip-card-front,
+.flip-card-back,
+.flip-card-front1,
+.flip-card-back1 {
+  height: 100%; /* Ensure front and back take full height */
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+}
+
+/* Mobile friendly */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .flip-card {
+    height: 300px; /* Adjusted height for smaller screens */
+    margin-bottom: 20px; /* Add space between cards */
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    max-height: 300px; /* Set a maximum height */
+  }
+
+  .flip-card h2,
+  .flip-card1 h3 {
+    font-size: 1rem;
+  }
+
+  .flip-card ul,
+  .flip-card1 ul {
+    font-size: 0.875rem;
+  }
+
 }
