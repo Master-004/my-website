@@ -88,7 +88,7 @@ ul li {
 .flip-card {
   background-color: transparent;
   width: 100%;
-  height: 250px; /* Set a fixed height */
+  height: 275px; /* Set a fixed height */
   perspective: 1000px; /* Keeps the 3D effect */
   cursor: pointer;
   display: flex;
