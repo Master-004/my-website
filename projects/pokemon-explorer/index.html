@@ -83,10 +83,49 @@
     <!-- Body -->
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-12">
 
-      <!-- Screenshot placeholder -->
-      <div class="rounded-xl overflow-hidden border border-gray-700 h-64 bg-gray-800 flex items-center justify-center">
-        <i class="fas fa-image text-5xl text-gray-600" aria-hidden="true"></i>
+      <!-- Screenshot Carousel -->
+      <div class="relative rounded-xl overflow-hidden border border-gray-700 bg-gray-800">
+        <div class="relative h-80">
+          <img src="/images/projects/pokemon-explorer-pokemon.png" alt="PokéDex Explorer — Pokémon browse view"
+               class="carousel-slide w-full h-full object-cover" />
+          <img src="/images/projects/pokemon-explorer-region.png" alt="PokéDex Explorer — Region filter view"
+               class="carousel-slide w-full h-full object-cover hidden" />
+          <img src="/images/projects/pokemon-explorer-team.png" alt="PokéDex Explorer — Team builder view"
+               class="carousel-slide w-full h-full object-cover hidden" />
+        </div>
+        <button id="carousel-prev"
+          class="absolute left-3 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full w-9 h-9 flex items-center justify-center transition-opacity"
+          aria-label="Previous screenshot">
+          <i class="fas fa-chevron-left text-sm"></i>
+        </button>
+        <button id="carousel-next"
+          class="absolute right-3 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full w-9 h-9 flex items-center justify-center transition-opacity"
+          aria-label="Next screenshot">
+          <i class="fas fa-chevron-right text-sm"></i>
+        </button>
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+          <button class="carousel-dot w-2 h-2 rounded-full bg-white transition-opacity" data-index="0" aria-label="Screenshot 1"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full bg-white opacity-40 transition-opacity" data-index="1" aria-label="Screenshot 2"></button>
+          <button class="carousel-dot w-2 h-2 rounded-full bg-white opacity-40 transition-opacity" data-index="2" aria-label="Screenshot 3"></button>
+        </div>
       </div>
+      <script>
+        (function () {
+          const slides = document.querySelectorAll('.carousel-slide');
+          const dots = document.querySelectorAll('.carousel-dot');
+          let current = 0;
+          function goTo(n) {
+            slides[current].classList.add('hidden');
+            dots[current].classList.add('opacity-40');
+            current = (n + slides.length) % slides.length;
+            slides[current].classList.remove('hidden');
+            dots[current].classList.remove('opacity-40');
+          }
+          document.getElementById('carousel-prev').addEventListener('click', () => goTo(current - 1));
+          document.getElementById('carousel-next').addEventListener('click', () => goTo(current + 1));
+          dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
+        })();
+      </script>
 
       <!-- Overview -->
       <div>
