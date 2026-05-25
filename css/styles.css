@@ -1,0 +1,313 @@
+/* ── Base font size (ADA: 18px minimum for body text) ────────────────────── */
+html {
+  font-size: 18px;
+}
+
+/* ── Focus styles (ADA: visible keyboard navigation) ─────────────────────── */
+:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Reduced motion (ADA: respect user preference) ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Typing cursor ───────────────────────────────────────────────────────── */
+.cursor {
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ── Sticky nav shadow on scroll ─────────────────────────────────────────── */
+nav {
+  transition: box-shadow 0.2s ease;
+}
+
+nav.scrolled {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Profile photo (responsive sizing) ───────────────────────────────────── */
+.profile-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .profile-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+  .profile-photo {
+    width: 280px !important;
+    height: 280px !important;
+  }
+}
+
+.profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #111827;
+}
+
+.wave-overlay {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+}
+
+/* ── Flip cards (Why Me section — click-triggered, not hover) ────────────── */
+.flip-card {
+  perspective: 1000px;
+  height: 340px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ── Project card expand/collapse ───────────────────────────────────────── */
+.details-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.details-toggle .chevron {
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.details-toggle[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Skeleton loading ────────────────────────────────────────────────────── */
+.skeleton {
+  background: #374151;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.skeleton-img   { height: 160px; margin-bottom: 12px; }
+.skeleton-title { height: 20px; width: 70%; margin-bottom: 8px; }
+.skeleton-line  { height: 14px; margin-bottom: 6px; }
+.skeleton-line.short { width: 50%; }
+
+/* ── Blog / markdown prose ───────────────────────────────────────────────── */
+.prose-dark h1, .prose-dark h2, .prose-dark h3 {
+  color: #f9fafb;
+  font-weight: 700;
+  margin-top: 1.75em;
+  margin-bottom: 0.75em;
+}
+
+.prose-dark p {
+  color: #d1d5db;
+  line-height: 1.75;
+  margin-bottom: 1em;
+}
+
+.prose-dark a { color: #60a5fa; text-decoration: underline; }
+
+.prose-dark ul, .prose-dark ol {
+  color: #d1d5db;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.prose-dark li { margin-bottom: 0.4em; }
+
+.prose-dark code {
+  background: #374151;
+  color: #93c5fd;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+.prose-dark pre {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 8px;
+  padding: 1em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.prose-dark pre code { background: transparent; padding: 0; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LIGHT MODE OVERRIDES
+   All Tailwind color classes are overridden when data-theme="light".
+   ══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Backgrounds */
+[data-theme="light"] .bg-gray-900 { background-color: #f8fafc; }
+[data-theme="light"] .bg-gray-800 { background-color: #f1f5f9; }
+[data-theme="light"] .bg-gray-700 { background-color: #e2e8f0; }
+[data-theme="light"] .bg-gray-600 { background-color: #cbd5e1; }
+
+/* Text */
+[data-theme="light"] .text-white  { color: #0f172a; }
+[data-theme="light"] .text-gray-200 { color: #1e293b; }
+[data-theme="light"] .text-gray-300 { color: #334155; }
+[data-theme="light"] .text-gray-400 { color: #64748b; }
+[data-theme="light"] .text-gray-500 { color: #94a3b8; }
+[data-theme="light"] .text-gray-600 { color: #94a3b8; }
+
+/* Borders */
+[data-theme="light"] .border-gray-700 { border-color: #cbd5e1; }
+[data-theme="light"] .border-gray-600 { border-color: #e2e8f0; }
+
+/* Nav / footer */
+[data-theme="light"] nav.bg-gray-800,
+[data-theme="light"] footer.bg-gray-800 {
+  background-color: #ffffff;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] nav.border-gray-700,
+[data-theme="light"] footer.border-gray-700 {
+  border-color: #e2e8f0;
+}
+
+/* Nav links */
+[data-theme="light"] nav .text-gray-300 { color: #475569; }
+[data-theme="light"] nav .text-white { color: #0f172a; }
+
+/* Footer */
+[data-theme="light"] footer .text-gray-400 { color: #64748b; }
+
+/* Scrolled nav shadow */
+[data-theme="light"] nav.scrolled {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* Mobile menu */
+[data-theme="light"] #mobile-menu.bg-gray-800 { background-color: #ffffff; }
+[data-theme="light"] #mobile-menu.border-gray-700 { border-color: #e2e8f0; }
+
+/* Tags */
+[data-theme="light"] .bg-gray-700.text-gray-300 {
+  background-color: #e2e8f0;
+  color: #334155;
+}
+
+/* Stat cards in About */
+[data-theme="light"] .bg-gray-700.rounded-xl { background-color: #e2e8f0; }
+
+/* Skills grid items */
+[data-theme="light"] .bg-gray-700.hover\:bg-gray-600 {
+  background-color: #e2e8f0;
+}
+[data-theme="light"] .bg-gray-700.hover\:bg-gray-600:hover {
+  background-color: #cbd5e1;
+}
+
+/* Flip cards */
+[data-theme="light"] .flip-card-front.bg-gray-800 { background-color: #f1f5f9; }
+[data-theme="light"] .flip-card-back.bg-gray-800  { background-color: #f1f5f9; }
+
+/* Project cards */
+[data-theme="light"] .project-card.bg-gray-800 { background-color: #ffffff; }
+[data-theme="light"] .project-card .bg-gray-700 { background-color: #e2e8f0; }
+
+/* Select / filter */
+[data-theme="light"] select {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+/* Contact icon circles */
+[data-theme="light"] .w-16.h-16.bg-gray-800 { background-color: #f1f5f9; }
+[data-theme="light"] .w-16.h-16.bg-gray-800.group-hover\:bg-gray-700:hover {
+  background-color: #e2e8f0;
+}
+
+/* Blue accent: keep as-is in light mode (already good contrast) */
+
+/* Blog cards */
+[data-theme="light"] .bg-gray-800.rounded-xl.border.border-gray-700 {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+}
+
+/* Prose (blog posts) */
+[data-theme="light"] .prose-dark h1,
+[data-theme="light"] .prose-dark h2,
+[data-theme="light"] .prose-dark h3 { color: #0f172a; }
+
+[data-theme="light"] .prose-dark p,
+[data-theme="light"] .prose-dark ul,
+[data-theme="light"] .prose-dark ol,
+[data-theme="light"] .prose-dark li { color: #334155; }
+
+[data-theme="light"] .prose-dark code { background: #e2e8f0; color: #1d4ed8; }
+[data-theme="light"] .prose-dark pre { background: #f1f5f9; border-color: #e2e8f0; }
+
+/* Profile photo border */
+[data-theme="light"] .profile-photo { border-color: #e2e8f0; }
+
+/* Blue links in light mode: slightly darker for contrast */
+[data-theme="light"] .text-blue-400 { color: #2563eb; }

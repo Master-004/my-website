@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Toby Alder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['attribute', '[data-theme="dark"]'],
+      theme: { extend: { colors: { accent: '#3B82F6' } } }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">Toby Alder</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/#about"      class="text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="/#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="/#projects"   class="text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="/#skills"     class="text-gray-300 hover:text-white transition-colors">Skills</a>
+        <a href="/blog/"       class="text-white font-medium transition-colors">Blog</a>
+        <a href="/#contact"    class="text-gray-300 hover:text-white transition-colors">Contact</a>
+        <a href="/TobyAlderResume.pdf" download
+           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Resume</a>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode"
+          class="text-gray-300 hover:text-white transition-colors text-lg">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-xl"
+        aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 flex flex-col gap-4">
+      <a href="/#about"      class="text-gray-300 hover:text-white">About</a>
+      <a href="/#experience" class="text-gray-300 hover:text-white">Experience</a>
+      <a href="/#projects"   class="text-gray-300 hover:text-white">Projects</a>
+      <a href="/#skills"     class="text-gray-300 hover:text-white">Skills</a>
+      <a href="/blog/"       class="text-white font-medium">Blog</a>
+      <a href="/#contact"    class="text-gray-300 hover:text-white">Contact</a>
+      <a href="/TobyAlderResume.pdf" download
+         class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium text-center">Resume</a>
+    </div>
+  </nav>
+
+  <section class="py-20 bg-gray-900 min-h-screen">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl font-bold text-white mb-2">Blog / TIL</h1>
+      <div class="w-16 h-1 bg-blue-500 mb-10 rounded"></div>
+
+      <div class="text-center py-20">
+        <i class="fas fa-pen-to-square text-6xl text-gray-600 mb-4"></i>
+        <p class="text-gray-400 text-lg">No posts yet — check back soon!</p>
+        <p class="text-gray-600 text-sm mt-2">Posts coming as I write them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-6 text-center text-gray-400 text-sm">
+      <p>© 2025 Toby Alder — Built with Go + HTMX</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Locker Rental System — Toby Alder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['attribute', '[data-theme="dark"]'],
+      theme: { extend: { colors: { accent: '#3B82F6' } } }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+  <!-- Nav -->
+  <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">Toby Alder</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/#about"      class="text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="/#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="/#projects"   class="text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="/#skills"     class="text-gray-300 hover:text-white transition-colors">Skills</a>
+        <a href="/blog/"       class="text-gray-300 hover:text-white transition-colors">Blog</a>
+        <a href="/#contact"    class="text-gray-300 hover:text-white transition-colors">Contact</a>
+        <a href="/TobyAlderResume.pdf" download
+           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Resume</a>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode"
+          class="text-gray-300 hover:text-white transition-colors text-lg">
+          <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-xl"
+        aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 flex flex-col gap-4">
+      <a href="/#about"      class="text-gray-300 hover:text-white">About</a>
+      <a href="/#experience" class="text-gray-300 hover:text-white">Experience</a>
+      <a href="/#projects"   class="text-gray-300 hover:text-white">Projects</a>
+      <a href="/#skills"     class="text-gray-300 hover:text-white">Skills</a>
+      <a href="/blog/"       class="text-gray-300 hover:text-white">Blog</a>
+      <a href="/#contact"    class="text-gray-300 hover:text-white">Contact</a>
+      <a href="/TobyAlderResume.pdf" download
+         class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium text-center">Resume</a>
+    </div>
+  </nav>
+
+  <div class="bg-gray-900 min-h-screen">
+
+    <!-- Header -->
+    <div class="bg-gray-800 border-b border-gray-700 py-12">
+      <div class="max-w-4xl mx-auto px-6">
+        <a href="/#projects"
+           class="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 text-sm transition-colors mb-6">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          Back to Projects
+        </a>
+        <h1 class="text-4xl font-extrabold text-white mt-2">Locker Rental System</h1>
+        <p class="text-blue-400 text-xl font-medium mt-1">Production Rewrite — Go + Kubernetes</p>
+        <p class="text-gray-400 mt-1">BYU Office of Information Technology</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Go</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Kubernetes</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Docker</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Redis</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">HTMX</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">SQL</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">REST APIs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Body -->
+    <div class="max-w-4xl mx-auto px-6 py-16 space-y-12">
+
+      <!-- Screenshot placeholder -->
+      <div class="rounded-xl overflow-hidden border border-gray-700 h-64 bg-gray-800 flex items-center justify-center">
+        <i class="fas fa-image text-5xl text-gray-600" aria-hidden="true"></i>
+      </div>
+
+      <!-- Overview -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
+        <p class="text-gray-300 leading-relaxed text-lg">
+          Rewrote the student-facing locker rental system from TypeScript on AWS into Go, migrating the entire
+          service to Kubernetes. The system handles locker reservations across BYU campus and is actively used
+          by students and IT staff daily. Redis was integrated for caching and Docker used for containerized deployment.
+        </p>
+      </div>
+
+      <!-- Role + Challenge -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+            <i class="fas fa-user text-blue-400" aria-hidden="true"></i>
+            My Role
+          </h2>
+          <p class="text-gray-300 leading-relaxed">
+            Led the full rewrite — designed the Go service, integrated Redis caching, containerized with Docker,
+            and migrated the deployment from AWS to Kubernetes.
+          </p>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+            <i class="fas fa-bolt text-blue-400" aria-hidden="true"></i>
+            The Challenge
+          </h2>
+          <p class="text-gray-300 leading-relaxed">
+            The existing TypeScript/AWS codebase had grown difficult to maintain and the AWS infrastructure was
+            costly. The goal was a clean, idiomatic Go rewrite with the same feature set, built to run on BYU's
+            Kubernetes cluster.
+          </p>
+        </div>
+      </div>
+
+      <!-- Key Highlights -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Key Highlights</h2>
+        <ul class="space-y-3" role="list">
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Rewrote TypeScript/AWS locker rental service in Go, deploying to Kubernetes</span>
+          </li>
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Integrated Redis for cache storage, reducing repetitive database queries</span>
+          </li>
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Containerized with Docker for consistent builds and Kubernetes deployment</span>
+          </li>
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Built student-facing reservation pages and admin dashboards using Go + HTMX</span>
+          </li>
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Consumed and wrote internal REST APIs to integrate with broader BYU IT systems</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Outcome -->
+      <div class="bg-blue-500 bg-opacity-10 border border-blue-500 border-opacity-30 rounded-xl p-6">
+        <h2 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <i class="fas fa-check-circle text-blue-400" aria-hidden="true"></i>
+          Outcome
+        </h2>
+        <p class="text-gray-300 leading-relaxed">
+          Production system running on Kubernetes, serving real BYU students. Reduced infrastructure dependency
+          on AWS while improving maintainability with a strongly-typed Go codebase.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Prev / Next -->
+    <div class="border-t border-gray-700 bg-gray-800">
+      <div class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center gap-4">
+        <div></div>
+        <a href="/projects/byu-intex-2024/"
+           class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group text-right max-w-xs ml-auto">
+          <div>
+            <div class="text-xs text-gray-500 uppercase tracking-wider">Next</div>
+            <div class="font-medium group-hover:text-blue-400 transition-colors">BYU Fall Intex 2024</div>
+          </div>
+          <i class="fas fa-arrow-right flex-shrink-0" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-8">
+    <div class="max-w-6xl mx-auto px-6 text-center text-gray-400 text-sm">
+      <p>© 2025 Toby Alder — Built with Go + HTMX</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
+</html>

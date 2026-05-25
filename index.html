@@ -1,418 +1,644 @@
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toby's Portfolio</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toby Alder — Full-Stack Developer</title>
+  <meta name="description" content="Toby Alder — Full-stack developer, MISM student at BYU, writing production Go at BYU OIT." />
 
-  <body>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      function flipCard(card) {
-        card.classList.toggle('flipped');
-      }
-      function flipCard1(card) {
-        card.classList.toggle('flipped1');
-      }
-    </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['attribute', '[data-theme="dark"]'],
+      theme: { extend: { colors: { accent: '#3B82F6' } } }
+    }
+  </script>
 
-    <style>
-      :root {
-        --profile-pic-size: 150px; /* Adjust the size as needed */
-      }
-    </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
 
-    <!-- Navigation -->
-    <nav class="bg-gray-900 py-4">
-      <div class="container mx-auto flex justify-between items-center px-8">
-        <h1 class="text-white text-2xl font-bold">Toby's Portfolio</h1>
-        <button id="nav-toggle" class="text-white md:hidden">
-          <i class="fas fa-bars"></i>
+  <!-- Nav -->
+  <nav class="bg-gray-800 border-b border-gray-700 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-white hover:text-blue-400 transition-colors">Toby Alder</a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about"      class="text-gray-300 hover:text-white transition-colors">About</a>
+        <a href="#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+        <a href="#projects"   class="text-gray-300 hover:text-white transition-colors">Projects</a>
+        <a href="#skills"     class="text-gray-300 hover:text-white transition-colors">Skills</a>
+        <a href="/blog/"      class="text-gray-300 hover:text-white transition-colors">Blog</a>
+        <a href="#contact"    class="text-gray-300 hover:text-white transition-colors">Contact</a>
+        <a href="/TobyAlderResume.pdf" download
+           class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          Resume
+        </a>
+        <button id="theme-toggle" aria-label="Toggle dark/light mode"
+          class="text-gray-300 hover:text-white transition-colors text-lg">
+          <i class="fas fa-moon" id="theme-icon"></i>
         </button>
-        <ul id="nav-menu" class="hidden md:flex space-x-4 text-white">
-          <li><a href="#about" class="hover:text-blue-400">About Me</a></li>
-          <li><a href="#projects" class="hover:text-blue-400">Projects</a></li>
-          <li><a href="#resume" class="hover:text-blue-400">Resume</a></li>
-          <li><a href="#moreabout" class="hover:text-blue-400">Why Me</a></li>
-          <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
-        </ul>
       </div>
-      <div id="dropdown-menu" class="hidden md:hidden bg-gray-900 text-white">
-        <ul class="flex flex-col space-y-2 p-4">
-          <li>
-            <a
-              href="#about"
-              class="hover:text-blue-400"
-              style="padding-left: 20px; font-size: 24px"
-            >
-              About Me
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              class="hover:text-blue-400"
-              style="padding-left: 20px; font-size: 24px"
-            >
-              Projects
-            </a>
-          </li>
-          <li>
-            <a
-              href="#resume"
-              class="hover:text-blue-400"
-              style="padding-left: 20px; font-size: 24px"
-            >
-              Resume
-            </a>
-          </li>
-          <li>
-            <a
-              href="#moreabout"
-              class="hover:text-blue-400"
-              style="padding-left: 20px; font-size: 24px"
-            >
-              Why Me
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              class="hover:text-blue-400"
-              style="padding-left: 20px; font-size: 24px"
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
+
+      <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white text-xl"
+        aria-label="Open navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 px-6 py-4 flex flex-col gap-4">
+      <a href="#about"      class="text-gray-300 hover:text-white">About</a>
+      <a href="#experience" class="text-gray-300 hover:text-white">Experience</a>
+      <a href="#projects"   class="text-gray-300 hover:text-white">Projects</a>
+      <a href="#skills"     class="text-gray-300 hover:text-white">Skills</a>
+      <a href="/blog/"      class="text-gray-300 hover:text-white">Blog</a>
+      <a href="#contact"    class="text-gray-300 hover:text-white">Contact</a>
+      <a href="/TobyAlderResume.pdf" download
+         class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium text-center">
+        Resume
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center bg-gray-900 px-6 py-20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 w-full">
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+          Hi, I'm <span class="text-blue-400">Toby</span>
+        </h1>
+        <p class="text-xl text-gray-400 mt-4 h-8" aria-live="polite" aria-label="Current role">
+          <span id="typing-text"></span><span class="cursor text-blue-400" aria-hidden="true">|</span>
+        </p>
+        <p class="text-gray-300 mt-6 max-w-lg mx-auto md:mx-0 leading-relaxed text-lg">
+          I build full-stack web applications — from the database up to the UI.
+          Currently writing production Go at BYU's Office of Information Technology.
+          MISM student at BYU, graduating April 2027.
+        </p>
+        <div class="flex flex-wrap gap-4 mt-8 justify-center md:justify-start">
+          <a href="#projects"
+             class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            View My Work
+          </a>
+          <a href="#contact"
+             class="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-6 py-3 rounded-lg font-medium transition-colors">
+            Get In Touch
+          </a>
+        </div>
       </div>
-    </nav>
 
-    <script>
-      document
-        .getElementById('nav-toggle')
-        .addEventListener('click', function () {
-          var dropdownMenu = document.getElementById('dropdown-menu');
-          dropdownMenu.classList.toggle('show');
-        });
-    </script>
+      <div class="flex-shrink-0">
+        <div class="profile-wrapper" id="profile-wrapper">
+          <img
+            src="/images/profile.jpg"
+            alt="Toby Alder"
+            class="profile-photo"
+            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22192%22 height=%22192%22%3E%3Crect fill=%22%23374151%22 width=%22192%22 height=%22192%22 rx=%2296%22/%3E%3C/svg%3E'"
+          />
+          <div id="wave-container" class="wave-overlay" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section
-      class="py-12 flex flex-col items-center text-center text-white bg-gray-800"
-    >
-      <img
-        src="images\Toby-Small-Profile.jpg"
-        alt="Toby's Profile Picture"
-        class="rounded-full w-48 h-48 object-cover border-4 border-gray-900 shadow-lg"
-      />
-      <h1 class="text-white text-4xl font-bold mt-6">Toby Alder</h1>
-      <p class="text-lg text-gray-400 mt-2">
-        Data Enthusiast | Problem Solver | Full-Stack Developer
-      </p>
-    </section>
+  <!-- About -->
+  <section id="about" class="py-20 bg-gray-800" aria-labelledby="about-heading">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 id="about-heading" class="text-3xl font-bold text-white mb-2">About Me</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-8 rounded" aria-hidden="true"></div>
+      <div class="grid md:grid-cols-5 gap-10 items-start">
+        <div class="md:col-span-3 space-y-4">
+          <p class="text-gray-300 leading-relaxed text-lg">
+            I'm a full-stack developer who loves building things that actually work for real people.
+            Right now I'm a Student Software Developer at BYU's Office of Information Technology,
+            where I write production Go, build and consume REST APIs, and ship features used daily
+            by students and IT staff across campus.
+          </p>
+          <p class="text-gray-300 leading-relaxed text-lg">
+            I'm completing a BS in Information Systems alongside a Master of Information Systems
+            Management (MISM) at BYU's Marriott School of Business — graduating April 2027 with a
+            4.0 GPA. I love the intersection of clean code, useful data, and great user experience.
+          </p>
+          <p class="text-gray-400 leading-relaxed">
+            Outside of code, you'll find me attempting escape rooms, growing things in the garden,
+            or losing spectacularly at board games.
+          </p>
+        </div>
+        <div class="md:col-span-2 grid grid-cols-2 gap-4" role="list" aria-label="Quick facts">
+          <div class="bg-gray-700 rounded-xl p-4 text-center" role="listitem">
+            <div class="text-2xl font-bold text-blue-400">4.0</div>
+            <div class="text-gray-400 text-sm mt-1">GPA</div>
+          </div>
+          <div class="bg-gray-700 rounded-xl p-4 text-center" role="listitem">
+            <div class="text-2xl font-bold text-blue-400">MISM</div>
+            <div class="text-gray-400 text-sm mt-1">BYU Marriott</div>
+          </div>
+          <div class="bg-gray-700 rounded-xl p-4 text-center" role="listitem">
+            <div class="text-2xl font-bold text-blue-400">Go</div>
+            <div class="text-gray-400 text-sm mt-1">In production</div>
+          </div>
+          <div class="bg-gray-700 rounded-xl p-4 text-center" role="listitem">
+            <div class="text-2xl font-bold text-blue-400">Apr '27</div>
+            <div class="text-gray-400 text-sm mt-1">Graduation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Me -->
-    <section id="about" class="py-16 px-6 bg-gray-700 text-center text-white">
-      <br />
-      <h2 class="text-3xl font-bold">About Me</h2>
+  <!-- Experience -->
+  <section id="experience" class="py-20 bg-gray-900" aria-labelledby="exp-heading">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 id="exp-heading" class="text-3xl font-bold text-white mb-2">Experience</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-10 rounded" aria-hidden="true"></div>
 
-      <!-- Personal Introduction Paragraph -->
-      <p class="text-lg max-w-2xl text-left mx-auto mt-4">
-        Hi, I'm Toby! I'm a passionate Information Systems enthusiast with a
-        deep interest in data analysis, technology, and solving real-world
-        problems. As a dedicated student, I am constantly seeking opportunities
-        to grow, collaborate, and apply my skills in creative ways. Whether it's
-        developing software solutions, analyzing complex data, or leading
-        projects, I'm committed to making a meaningful impact.
-      </p>
-    </section>
+      <div class="space-y-8">
+        <!-- BYU OIT -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
+            <div class="w-0.5 bg-gray-700 flex-1 mt-2"></div>
+          </div>
+          <div class="pb-8">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h3 class="text-xl font-bold text-white">Student Software Developer</h3>
+              <span class="text-blue-400 font-medium">BYU Office of Information Technology</span>
+              <span class="text-gray-500 text-sm ml-auto">Apr 2025 – Present</span>
+            </div>
+            <ul class="mt-3 space-y-2" role="list">
+              <li class="text-gray-300 flex gap-2">
+                <span class="text-blue-400 flex-shrink-0" aria-hidden="true">▸</span>
+                Rewrote the locker rental system from TypeScript/AWS into Go, deploying to Kubernetes with Redis caching and Docker containerization
+              </li>
+              <li class="text-gray-300 flex gap-2">
+                <span class="text-blue-400 flex-shrink-0" aria-hidden="true">▸</span>
+                Built and maintained student-facing pages and admin dashboards using Go, HTMX, and SQL
+              </li>
+              <li class="text-gray-300 flex gap-2">
+                <span class="text-blue-400 flex-shrink-0" aria-hidden="true">▸</span>
+                Developed UI components consuming internal REST APIs; collaborated via Git and Agile workflows
+              </li>
+            </ul>
+          </div>
+        </div>
 
-    <section id="projects" class="py-16 px-6 bg-gray-700 text-white">
-      <h2 class="text-3xl font-bold text-center mb-8">My Projects</h2>
-      <p class="text-center">Click on these cards to learn more</p>
-      <br />
+        <!-- Excel Mentor -->
+        <div class="flex gap-6">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-gray-500 mt-1.5 flex-shrink-0"></div>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h3 class="text-xl font-bold text-white">Excel Mentor</h3>
+              <span class="text-gray-400 font-medium">Brigham Young University</span>
+              <span class="text-gray-500 text-sm ml-auto">Sep 2023 – Apr 2025</span>
+            </div>
+            <p class="text-gray-300 mt-2">
+              Advised 1,200+ students in Excel-based analysis and problem-solving through one-on-one sessions,
+              providing 10+ hours of weekly academic support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 bg-gray-800" aria-labelledby="projects-heading">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 id="projects-heading" class="text-3xl font-bold text-white mb-2">Projects</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-10 rounded" aria-hidden="true"></div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project Card 1 -->
-        <div class="flip-card zoom-effect" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <br />
-              <h2 class="text-xl font-semibold">BYU Fall Intex 2024</h2>
-              <br />
-              <p>Full-Stack Web App</p>
-              <p>for Turtle Shelter Project</p>
+
+        <!-- Locker Rental System -->
+        <a href="/projects/locker-system/"
+           class="project-card group bg-gray-700 rounded-xl overflow-hidden border border-gray-600 hover:border-blue-500 transition-all flex flex-col"
+           aria-label="View details for Locker Rental System">
+          <div class="h-48 bg-gray-600 flex items-center justify-center overflow-hidden">
+            <img src="/images/projects/locker-system.png" alt="Screenshot of Locker Rental System"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 onerror="this.parentElement.innerHTML='<i class=\'fas fa-code text-5xl text-gray-400\'></i>'" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Locker Rental System</h3>
+            <p class="text-blue-400 text-sm font-medium mt-0.5">Production Rewrite — Go + Kubernetes</p>
+            <p class="text-gray-400 text-sm mt-1">BYU Office of Information Technology</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Go</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Kubernetes</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Docker</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Redis</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">HTMX</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">SQL</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">REST APIs</span>
             </div>
-            <div class="flip-card-back">
-              <h3 class="text-xl font-semibold">BYU Fall Intex 2024</h3>
-              <br />
-              <div class="list-disc ml-5">
-                <ul class="list-disc list-inside text-left">
-                  <li>
-                    Developed a
-                    <b>full-stack web app</b>
-                    to analyze homelessness trends (2017-2022) with CRUD
-                    functionality.
-                  </li>
-                  <li>
-                    Utilized
-                    <b>Node.js, Express, Knex, and SQL</b>
-                    for backend development.
-                  </li>
-                  <li>
-                    Hosted the project on
-                    <b>AWS with Elastic Beanstalk</b>
-                    .
-                  </li>
-                  <li>
-                    Designed interactive charts & dashboard using
-                    <b>Tableau and Pandas</b>
-                    .
-                  </li>
-                </ul>
-              </div>
+            <div class="mt-auto pt-4 flex items-center gap-1 text-blue-400 text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Project Card 2 -->
-        <div class="flip-card zoom-effect" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <br />
-              <h2 class="text-xl font-semibold">AirBnB Renovation Dashboard</h2>
-              <br />
-              <p>Interactive Dashboard</p>
-              <p>for Basement Renovation Analysis</p>
+        <!-- BYU Intex 2024 -->
+        <a href="/projects/byu-intex-2024/"
+           class="project-card group bg-gray-700 rounded-xl overflow-hidden border border-gray-600 hover:border-blue-500 transition-all flex flex-col"
+           aria-label="View details for BYU Fall Intex 2024">
+          <div class="h-48 bg-gray-600 flex items-center justify-center overflow-hidden">
+            <img src="/images/projects/byu-intex.png" alt="Screenshot of BYU Fall Intex 2024"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 onerror="this.parentElement.innerHTML='<i class=\'fas fa-code text-5xl text-gray-400\'></i>'" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">BYU Fall Intex 2024</h3>
+            <p class="text-blue-400 text-sm font-medium mt-0.5">Full-Stack Web App</p>
+            <p class="text-gray-400 text-sm mt-1">for Turtle Shelter Project</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Node.js</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Express</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">SQL</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">AWS</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Tableau</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Python</span>
             </div>
-            <div class="flip-card-back">
-              <h3 class="text-xl font-semibold">AirBnB Renovation Dashboard</h3>
-              <br />
-              <div class="list-disc ml-5">
-                <ul class="list-disc list-inside text-left">
-                  <li>
-                    Created an interactive
-                    <b>Tableau dashboard</b>
-                    to analyze renovation feasibility using AirBnB price
-                    comparisons.
-                  </li>
-                  <li>
-                    Utilized
-                    <b>Excel</b>
-                    data for detailed insights, including
-                    <b>bar charts and filtering</b>
-                    by neighborhood.
-                  </li>
-                  <li>
-                    Published on
-                    <b>Tableau Public</b>
-                    for easy access and sharing.
-                  </li>
-                </ul>
-              </div>
+            <div class="mt-auto pt-4 flex items-center gap-1 text-blue-400 text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Project Card 3 -->
-        <div class="flip-card zoom-effect" onclick="flipCard(this)">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <br />
-              <h2 class="text-xl font-semibold">Mission Nutrition</h2>
-              <br />
-              <p>Collaborative Team Project</p>
-              <p>for Missionary Meal Planning</p>
+        <!-- Mission Nutrition -->
+        <a href="/projects/mission-nutrition/"
+           class="project-card group bg-gray-700 rounded-xl overflow-hidden border border-gray-600 hover:border-blue-500 transition-all flex flex-col"
+           aria-label="View details for Mission Nutrition">
+          <div class="h-48 bg-gray-600 flex items-center justify-center overflow-hidden">
+            <img src="/images/projects/mission-nutrition.png" alt="Screenshot of Mission Nutrition"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 onerror="this.parentElement.innerHTML='<i class=\'fas fa-code text-5xl text-gray-400\'></i>'" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Mission Nutrition</h3>
+            <p class="text-blue-400 text-sm font-medium mt-0.5">Collaborative Team Project</p>
+            <p class="text-gray-400 text-sm mt-1">Meal planning app for missionaries</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">React</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">.NET</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">C#</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Figma</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Scrum</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">JavaScript</span>
             </div>
-            <div class="flip-card-back">
-              <h3 class="text-xl font-semibold">Mission Nutrition</h3>
-              <br />
-              <div class="list-disc ml-5">
-                <ul class="list-disc list-inside text-left">
-                  <li>
-                    Developed a
-                    <b>meal planning app</b>
-                    for missionaries using
-                    <b>React, Dotnet</b>
-                    , and
-                    <b>Figma</b>
-                    for UI/UX design.
-                  </li>
-                  <li>
-                    Collaborated using
-                    <b>GitHub and Slack</b>
-                    with Scrum methodology to prioritize and pivot features.
-                  </li>
-                </ul>
-              </div>
+            <div class="mt-auto pt-4 flex items-center gap-1 text-blue-400 text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
             </div>
           </div>
-        </div>
+        </a>
 
-        <!-- Add more cards as needed -->
+        <!-- PokéDex Explorer -->
+        <a href="/projects/pokemon-explorer/"
+           class="project-card group bg-gray-700 rounded-xl overflow-hidden border border-gray-600 hover:border-blue-500 transition-all flex flex-col"
+           aria-label="View details for PokéDex Explorer">
+          <div class="h-48 bg-gray-600 flex items-center justify-center overflow-hidden">
+            <img src="/images/projects/pokemon-explorer.png" alt="Screenshot of PokéDex Explorer"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 onerror="this.parentElement.innerHTML='<i class=\'fas fa-code text-5xl text-gray-400\'></i>'" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">PokéDex Explorer</h3>
+            <p class="text-blue-400 text-sm font-medium mt-0.5">React + TypeScript Web App</p>
+            <p class="text-gray-400 text-sm mt-1">Interactive Pokémon team builder</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">React</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">TypeScript</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Vite</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Tailwind CSS</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">REST APIs</span>
+            </div>
+            <div class="mt-auto pt-4 flex items-center gap-1 text-blue-400 text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- AirBnB Dashboard -->
+        <a href="/projects/airbnb-dashboard/"
+           class="project-card group bg-gray-700 rounded-xl overflow-hidden border border-gray-600 hover:border-blue-500 transition-all flex flex-col"
+           aria-label="View details for AirBnB Renovation Dashboard">
+          <div class="h-48 bg-gray-600 flex items-center justify-center overflow-hidden">
+            <img src="/images/projects/airbnb-dashboard.png" alt="Screenshot of AirBnB Renovation Dashboard"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                 onerror="this.parentElement.innerHTML='<i class=\'fas fa-code text-5xl text-gray-400\'></i>'" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">AirBnB Renovation Dashboard</h3>
+            <p class="text-blue-400 text-sm font-medium mt-0.5">Interactive Data Dashboard</p>
+            <p class="text-gray-400 text-sm mt-1">Basement renovation feasibility analysis</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Tableau</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Excel</span>
+              <span class="bg-gray-600 text-gray-300 text-xs px-2 py-1 rounded">Data Analysis</span>
+            </div>
+            <div class="mt-auto pt-4 flex items-center gap-1 text-blue-400 text-sm font-medium">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform" aria-hidden="true"></i>
+            </div>
+          </div>
+        </a>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="py-16 px-6 bg-gray-700 text-white text-center">
-      <h2 class="text-3xl font-semibold">Resume</h2>
-      <p class="mt-4">Check out my resume below:</p>
-      <a
-        href="TobyAlderResume.pdf"
-        class="mt-4 inline-block px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600"
-        target="_blank"
-      >
+  <!-- Skills -->
+  <section id="skills" class="py-20 bg-gray-900" aria-labelledby="skills-heading">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 id="skills-heading" class="text-3xl font-bold text-white mb-2">Skills &amp; Tech</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-10 rounded" aria-hidden="true"></div>
+
+      <!-- Languages -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Languages</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Languages skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Go</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">JavaScript</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">TypeScript</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Python</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">C#</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web & APIs -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Web &amp; APIs</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Web & APIs skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Node.js</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Express</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">React</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">HTMX</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">REST APIs</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Flask</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">ASP.NET</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Databases -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Databases</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Databases skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">PostgreSQL</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">MySQL</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">SQLite</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Redis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cloud & DevOps -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Cloud &amp; DevOps</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Cloud & DevOps skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">AWS</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Docker</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Kubernetes</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Git</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Linux</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data & ML -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Data &amp; ML</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Data & ML skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Pandas</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="" class="w-5 h-5" onerror="this.style.display='none'" aria-hidden="true" />
+            <span class="text-gray-200 font-medium">Scikit-learn</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">Tableau</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">Excel / VBA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="mb-8">
+        <h3 class="text-blue-400 text-sm font-semibold uppercase tracking-wider mb-4">Security</h3>
+        <div class="flex flex-wrap gap-3" role="list" aria-label="Security skills">
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">XSS &amp; SQLi Prevention</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">HTTPS / HSTS</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">MFA Integration</span>
+          </div>
+          <div class="flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-blue-500 px-4 py-2 rounded-lg transition-colors" role="listitem">
+            <span class="text-gray-200 font-medium">Secure Credentials</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Me -->
+  <section id="why-me" class="py-20 bg-gray-800" aria-labelledby="whyme-heading">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 id="whyme-heading" class="text-3xl font-bold text-white mb-2">Why Me</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-3 rounded" aria-hidden="true"></div>
+      <p class="text-gray-400 mb-8">Click any card to flip it.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="flip-card" role="button" tabindex="0" aria-label="What I Offer — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-700 rounded-xl border border-gray-600 flex flex-col items-center justify-center p-8 text-center">
+              <i class="fas fa-toolbox text-5xl text-blue-400 mb-4" aria-hidden="true"></i>
+              <h3 class="text-xl font-bold text-white">What I Offer</h3>
+              <p class="text-gray-400 mt-2">Click to learn more</p>
+            </div>
+            <div class="flip-card-back bg-gray-700 rounded-xl border border-blue-500 p-6 flex flex-col justify-center">
+              <h3 class="text-xl font-bold text-white mb-4">What I Offer</h3>
+              <ul class="text-gray-300 space-y-2" role="list">
+                <li>▸ Production Go web development</li>
+                <li>▸ Full-stack apps: backend to UI</li>
+                <li>▸ REST API design &amp; integration</li>
+                <li>▸ Data analysis &amp; visualization</li>
+                <li>▸ Secure, maintainable code</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" role="button" tabindex="0" aria-label="My Values — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-700 rounded-xl border border-gray-600 flex flex-col items-center justify-center p-8 text-center">
+              <i class="fas fa-heart text-5xl text-blue-400 mb-4" aria-hidden="true"></i>
+              <h3 class="text-xl font-bold text-white">My Values</h3>
+              <p class="text-gray-400 mt-2">Click to learn more</p>
+            </div>
+            <div class="flip-card-back bg-gray-700 rounded-xl border border-blue-500 p-6 flex flex-col justify-center">
+              <h3 class="text-xl font-bold text-white mb-4">Values &amp; Aspirations</h3>
+              <ul class="text-gray-300 space-y-2" role="list">
+                <li>▸ Integrity in every line of code</li>
+                <li>▸ Curiosity that drives growth</li>
+                <li>▸ Building things that matter</li>
+                <li>▸ Collaborative &amp; team-first</li>
+                <li>▸ Continuous learning mindset</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" role="button" tabindex="0" aria-label="How I Work — click to flip">
+          <div class="flip-card-inner">
+            <div class="flip-card-front bg-gray-700 rounded-xl border border-gray-600 flex flex-col items-center justify-center p-8 text-center">
+              <i class="fas fa-users text-5xl text-blue-400 mb-4" aria-hidden="true"></i>
+              <h3 class="text-xl font-bold text-white">How I Work</h3>
+              <p class="text-gray-400 mt-2">Click to learn more</p>
+            </div>
+            <div class="flip-card-back bg-gray-700 rounded-xl border border-blue-500 p-6 flex flex-col justify-center">
+              <h3 class="text-xl font-bold text-white mb-4">How I Work Best</h3>
+              <ul class="text-gray-300 space-y-2" role="list">
+                <li>▸ Agile &amp; Scrum methodology</li>
+                <li>▸ Clear, frequent communication</li>
+                <li>▸ Ownership of my deliverables</li>
+                <li>▸ Comfortable with ambiguity</li>
+                <li>▸ Feedback-driven improvement</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="py-20 bg-gray-900" aria-labelledby="resume-heading">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 id="resume-heading" class="text-3xl font-bold text-white mb-2">Resume</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-8 rounded mx-auto" aria-hidden="true"></div>
+      <p class="text-gray-400 mb-8 text-lg">Want the full picture? Download my resume.</p>
+      <a href="/TobyAlderResume.pdf" download
+         class="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-colors"
+         aria-label="Download Toby Alder's resume as a PDF">
+        <i class="fas fa-download" aria-hidden="true"></i>
         Download Resume
       </a>
-    </section>
+    </div>
+  </section>
 
-    <section id="moreabout" class="py-16 px-6 bg-gray-700 text-white">
-      <h2 class="text-3xl font-bold text-center">Why Me</h2>
-      <br />
-      <p class="text-center">Click on these cards to learn more</p>
-      <br />
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- More about me Section -->
-        <!-- Offer Card 1 -->
-        <div class="flip-card1" onclick="flipCard1(this)">
-          <div class="flip-card-inner1 shadow-effect">
-            <div class="flip-card-front1">
-              <h3 class="text-xl font-semibold">What I Offer</h3>
-            </div>
-            <div class="flip-card-back1">
-              <h3 class="text-xl font-semibold">What I Offer</h3>
-              <br />
-              <ul class="list-disc ml-6 space-y-2 text-left">
-                <li>
-                  <strong>Strong Technical Skills:</strong>
-                  Experienced in Node.js, Express, SQL, Tableau, Pandas, and
-                  AWS.
-                </li>
-                <li>
-                  <strong>Analytical Expertise:</strong>
-                  Skilled in data analysis, visualization, and translating
-                  insights into actionable strategies.
-                </li>
-                <li>
-                  <strong>Leadership & Collaboration:</strong>
-                  Actively contribute in team environments, having served in
-                  leadership roles such as a Teaching Assistant, Eagle Scout,
-                  and District Leader.
-                </li>
-                <li>
-                  <strong>Problem-Solving:</strong>
-                  I approach challenges with a positive, growth-minded attitude,
-                  and enjoy finding innovative solutions.
-                </li>
-                <li>
-                  <strong>Continuous Learning:</strong>
-                  Always looking for new technologies and tools to enhance my
-                  skills and stay ahead of the curve.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Values Card 2 -->
-        <div class="flip-card1" onclick="flipCard1(this)">
-          <div class="flip-card-inner1 shadow-effect">
-            <div class="flip-card-front1">
-              <h3 class="text-xl font-semibold">
-                My Values and Career Aspirations
-              </h3>
-            </div>
-            <div class="flip-card-back1">
-              <h3 class="text-xl font-semibold">
-                My Values and Career Aspirations
-              </h3>
-              <br />
-              <ul class="list-disc ml-6 space-y-2 text-left">
-                <li>
-                  <strong>I believe that</strong>
-                  collaboration, continuous learning, and perseverance are key
-                  to personal and professional growth. I'm passionate about
-                  contributing to projects that make a tangible difference and
-                  working with teams that value diversity, creativity, and
-                  innovation.
-                </li>
-                <li>
-                  <strong>My career goal</strong>
-                  is to leverage my background in Information Systems to drive
-                  technological advancements and contribute to impactful
-                  projects that improve lives and communities.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Work best Card 3 -->
-        <div class="flip-card1" onclick="flipCard1(this)">
-          <div class="flip-card-inner1 shadow-effect">
-            <div class="flip-card-front1">
-              <h3 class="text-xl font-semibold">How I Work Best</h3>
-            </div>
-            <div class="flip-card-back1">
-              <h3 class="text-xl font-semibold">How I Work Best</h3>
-              <br />
-              <ul class="list-disc ml-6 space-y-2 text-left">
-                <li>
-                  <strong>Collaborative & Communicative:</strong>
-                  I enjoy working in teams where knowledge-sharing and open
-                  discussions lead to creative problem-solving.
-                </li>
-                <li>
-                  <strong>Adaptable & Growth-Oriented:</strong>
-                  Whether in structured or dynamic environments, I embrace
-                  challenges and see them as opportunities to learn and
-                  innovate.
-                </li>
-                <li>
-                  <strong>Detail-Oriented, but Big-Picture Focused:</strong>
-                  I balance technical precision with a strategic mindset to
-                  ensure solutions are both effective and scalable.
-                </li>
-                <li>
-                  <strong>Proactive & Solution-Driven:</strong>
-                  I take ownership of my work, anticipate roadblocks, and find
-                  ways to keep projects moving forward.
-                </li>
-                <li>
-                  <strong>Positive & Supportive Team Member:</strong>
-                  I believe a great work culture is built on encouragement,
-                  respect, and shared success.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-6 bg-gray-900 text-center text-white">
-      <h2 class="text-3xl font-semibold">Contact Me</h2>
-      <br />
-      <p class="text-gray-400 mt-2">
-        Feel free to reach out via email: salder004@gmail.com
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-gray-800" aria-labelledby="contact-heading">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 id="contact-heading" class="text-3xl font-bold text-white mb-2">Get In Touch</h2>
+      <div class="w-16 h-1 bg-blue-500 mb-8 rounded mx-auto" aria-hidden="true"></div>
+      <p class="text-gray-400 text-lg mb-10">
+        Open to junior full-stack roles and internships. Reach out via LinkedIn or check out my code on GitHub.
       </p>
-      <p class="text-gray-400 mt-2">
-        <b>Let's connect on LinkedIn!</b>
-        <a
-          href="https://www.linkedin.com/in/salder004/"
-          class="text-blue-400 underline"
-          target="_blank"
-        >
-          <i class="fa-brands fa-linkedin fa-2xl" style="color: #737b89"></i>
+      <div class="flex justify-center gap-8">
+        <a href="https://www.linkedin.com/in/salder004/" target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors group"
+           aria-label="Toby Alder on LinkedIn (opens in new tab)">
+          <div class="w-16 h-16 bg-gray-700 group-hover:bg-gray-600 rounded-full flex items-center justify-center text-2xl border border-gray-600 transition-colors">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </div>
+          <span>LinkedIn</span>
         </a>
-      </p>
-      <!-- <p class="text-gray-400 mt-2">Check out my github: <a href="https://github.com/Master-004" class="text-blue-400 underline" target="_blank"><i class="fa-brands fa-github fa-2xl" style="color: #737b89;"></i></a></p> -->
-    </section>
-  </body>
+        <a href="https://github.com/Master-004" target="_blank" rel="noopener noreferrer"
+           class="flex flex-col items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors group"
+           aria-label="Toby Alder on GitHub (opens in new tab)">
+          <div class="w-16 h-16 bg-gray-700 group-hover:bg-gray-600 rounded-full flex items-center justify-center text-2xl border border-gray-600 transition-colors">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </div>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 border-t border-gray-700 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-6 text-center text-gray-400 text-sm">
+      <p>© 2025 Toby Alder — Built with Go + HTMX</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script src="/js/animations.js"></script>
+</body>
 </html>
