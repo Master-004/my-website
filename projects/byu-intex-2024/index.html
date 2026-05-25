@@ -78,54 +78,28 @@
     <!-- Body -->
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-12">
 
-      <!-- Screenshot Carousel -->
-      <div class="relative rounded-xl overflow-hidden border border-gray-700 bg-gray-800">
-        <div class="relative h-80">
-          <img src="/images/projects/byu-intex-2024.png" alt="BYU Fall Intex 2024 — App view"
-               class="carousel-slide w-full h-full object-cover" />
-          <img src="/images/projects/byu-intex-dash.png" alt="BYU Fall Intex 2024 — Dashboard view"
-               class="carousel-slide w-full h-full object-cover hidden" />
-        </div>
-        <button id="carousel-prev"
-          class="absolute left-3 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full w-9 h-9 flex items-center justify-center transition-opacity"
-          aria-label="Previous screenshot">
-          <i class="fas fa-chevron-left text-sm"></i>
-        </button>
-        <button id="carousel-next"
-          class="absolute right-3 top-1/2 -translate-y-1/2 bg-gray-900 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full w-9 h-9 flex items-center justify-center transition-opacity"
-          aria-label="Next screenshot">
-          <i class="fas fa-chevron-right text-sm"></i>
-        </button>
-        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-          <button class="carousel-dot w-2 h-2 rounded-full bg-white transition-opacity" data-index="0" aria-label="Screenshot 1"></button>
-          <button class="carousel-dot w-2 h-2 rounded-full bg-white opacity-40 transition-opacity" data-index="1" aria-label="Screenshot 2"></button>
+      <!-- Screenshot -->
+      <div class="rounded-xl overflow-hidden border border-gray-700 bg-gray-800">
+        <img src="/images/projects/byu-intex-2024.png" alt="BYU Fall Intex 2024 — App view"
+             class="w-full object-contain max-h-96" />
+      </div>
+
+      <!-- Live Dashboard -->
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-4">Live Admin Dashboard (Demo)</h2>
+        <div class="rounded-xl overflow-hidden border border-gray-700 bg-gray-800">
+          <div class='tableauPlaceholder' id='viz1779727676455' style='position: relative'><noscript><a href='#'><img alt='TurtleShelterDash ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tu&#47;TurtleShelterDashboard1_1&#47;TurtleShelterDash&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TurtleShelterDashboard1_1&#47;TurtleShelterDash' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Tu&#47;TurtleShelterDashboard1_1&#47;TurtleShelterDash&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div><script type='text/javascript'>var divElement = document.getElementById('viz1779727676455'); var vizElement = divElement.getElementsByTagName('object')[0]; if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='2377px';} var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
         </div>
       </div>
-      <script>
-        (function () {
-          const slides = document.querySelectorAll('.carousel-slide');
-          const dots = document.querySelectorAll('.carousel-dot');
-          let current = 0;
-          function goTo(n) {
-            slides[current].classList.add('hidden');
-            dots[current].classList.add('opacity-40');
-            current = (n + slides.length) % slides.length;
-            slides[current].classList.remove('hidden');
-            dots[current].classList.remove('opacity-40');
-          }
-          document.getElementById('carousel-prev').addEventListener('click', () => goTo(current - 1));
-          document.getElementById('carousel-next').addEventListener('click', () => goTo(current + 1));
-          dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
-        })();
-      </script>
 
       <!-- Overview -->
       <div>
         <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
         <p class="text-gray-300 leading-relaxed text-lg">
-          A full-stack web application built for the Turtle Shelter Project to analyze and visualize homelessness
-          trends across the US from 2017–2022. Built as part of BYU's senior capstone (Intex), the project
-          involved a team working under real client requirements with a full CRUD backend and interactive data dashboard.
+          A full-stack web application built for the Turtle Shelter Project as part of BYU's IS Intex project
+          during the first half of my junior year. The project involved a team working under real client requirements to build a site that
+          helps coordinate the production of lifesaving vests — tracking parts inventory, volunteer hours, and
+          locations through both public-facing awareness pages and internal admin tools.
         </p>
       </div>
 
@@ -147,8 +121,9 @@
             The Challenge
           </h2>
           <p class="text-gray-300 leading-relaxed">
-            Turning raw homelessness data spanning five years into a useful, navigable dashboard for a nonprofit
-            client, while shipping a production-quality app under a semester deadline.
+            Building a full-featured app for a nonprofit client under a semester deadline — with public-facing
+            pages to spread awareness of the Turtle Shelter Project and admin tools to coordinate volunteers,
+            parts, and vest production logistics.
           </p>
         </div>
       </div>
@@ -159,7 +134,7 @@
         <ul class="space-y-3" role="list">
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Developed a full-stack web app to analyze homelessness trends (2017–2022) with CRUD functionality</span>
+            <span>Built a full-stack web app with user-facing awareness pages and admin tools to coordinate vest production for the Turtle Shelter Project</span>
           </li>
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
@@ -193,19 +168,19 @@
     <!-- Prev / Next -->
     <div class="border-t border-gray-700 bg-gray-800">
       <div class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center gap-4">
-        <a href="/projects/locker-system/"
+        <a href="/projects/mission-nutrition/"
            class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group max-w-xs">
           <i class="fas fa-arrow-left flex-shrink-0" aria-hidden="true"></i>
           <div class="text-left">
             <div class="text-xs text-gray-500 uppercase tracking-wider">Previous</div>
-            <div class="font-medium group-hover:text-blue-400 transition-colors">Locker Rental System</div>
+            <div class="font-medium group-hover:text-blue-400 transition-colors">Mission Nutrition</div>
           </div>
         </a>
-        <a href="/projects/mission-nutrition/"
+        <a href="/projects/airbnb-dashboard/"
            class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group text-right max-w-xs ml-auto">
           <div>
             <div class="text-xs text-gray-500 uppercase tracking-wider">Next</div>
-            <div class="font-medium group-hover:text-blue-400 transition-colors">Mission Nutrition</div>
+            <div class="font-medium group-hover:text-blue-400 transition-colors">AirBnB Renovation Dashboard</div>
           </div>
           <i class="fas fa-arrow-right flex-shrink-0" aria-hidden="true"></i>
         </a>

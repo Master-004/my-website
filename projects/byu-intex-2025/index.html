@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Locker Rental System — Toby Alder</title>
+  <title>BYU Winter Intex 2025 — Toby Alder</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -61,17 +61,23 @@
           <i class="fas fa-arrow-left" aria-hidden="true"></i>
           Back to Projects
         </a>
-        <h1 class="text-4xl font-extrabold text-white mt-2">Locker Rental System</h1>
-        <p class="text-blue-400 text-xl font-medium mt-1">Production Rewrite — Go + Kubernetes</p>
-        <p class="text-gray-400 mt-1">BYU Office of Information Technology</p>
+        <h1 class="text-4xl font-extrabold text-white mt-2">BYU Winter Intex 2025</h1>
+        <p class="text-blue-400 text-xl font-medium mt-1">Full-Stack Web App</p>
+        <p class="text-gray-400 mt-1">Movie recommendation platform</p>
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Go</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Kubernetes</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Docker</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Redis</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">HTMX</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">SQL</span>
-          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">REST APIs</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">React</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">TypeScript</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">C#</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">.NET</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Figma</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Scrum</span>
+          <span class="bg-gray-700 text-gray-300 text-sm px-3 py-1 rounded-full">Security</span>
+        </div>
+        <div class="flex gap-3 mt-6">
+          <a href="https://github.com/Master-004/intex-winter-2025" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors">
+            <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+          </a>
         </div>
       </div>
     </div>
@@ -79,9 +85,9 @@
     <!-- Body -->
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-12">
 
-      <!-- Screenshot -->
+      <!-- Screenshot placeholder -->
       <div class="rounded-xl overflow-hidden border border-gray-700 bg-gray-800">
-        <img src="/images/projects/locker-system.png" alt="Screenshot of Locker Rental System"
+        <img src="/images/projects/intex-winter-2025.png" alt="Screenshot of BYU Winter Intex 2025"
              class="w-full object-contain max-h-96"
              onerror="this.parentElement.innerHTML='<div class=\'h-64 flex items-center justify-center\'><i class=\'fas fa-image text-5xl text-gray-600\'></i></div>'" />
       </div>
@@ -90,9 +96,10 @@
       <div>
         <h2 class="text-2xl font-bold text-white mb-4">Overview</h2>
         <p class="text-gray-300 leading-relaxed text-lg">
-          Rewrote the student-facing locker rental system from TypeScript on AWS into Go, migrating the entire
-          service to Kubernetes. The system handles locker reservations across BYU campus and is actively used
-          by students and IT staff daily. Redis was integrated for caching and Docker used for containerized deployment.
+          A Netflix-inspired movie recommendation web app built for a fictional streaming company as the capstone
+          Intex project at the end of my junior year. The platform recommends movies based on how users rate titles
+          they've seen, with a full CRUD backend, cookie consent and security compliance, and a polished UI
+          designed from scratch in Figma before a single line of code was written.
         </p>
       </div>
 
@@ -104,9 +111,8 @@
             My Role
           </h2>
           <p class="text-gray-300 leading-relaxed">
-            Sole student full-stack contributor — while the project started with a larger team, other students rotated to
-            other projects, leaving me as the only student developer handling both frontend (Go + HTMX) and backend
-            (Go services, Redis, SQL) through completion.
+            Full-stack contributor — led Figma UI/UX design, implemented frontend components in React + TypeScript,
+            and built backend API routes in C# .NET. Did not work on the recommendation engine itself.
           </p>
         </div>
         <div class="bg-gray-800 rounded-xl p-6 border border-gray-700">
@@ -115,9 +121,9 @@
             The Challenge
           </h2>
           <p class="text-gray-300 leading-relaxed">
-            The existing TypeScript/AWS codebase had grown difficult to maintain and the AWS infrastructure was
-            costly. The goal was a clean, idiomatic Go rewrite with the same feature set, built to run on BYU's
-            Kubernetes cluster.
+            Shipping a secure, production-quality web app for a fictional client smaller than Netflix —
+            with proper cookie handling, user privacy considerations, and a design-first workflow using
+            Figma and Scrum sprints.
           </p>
         </div>
       </div>
@@ -128,23 +134,27 @@
         <ul class="space-y-3" role="list">
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Rewrote TypeScript/AWS locker rental service in Go, deploying to Kubernetes</span>
+            <span>Designed full UI/UX in Figma before development — wireframes through high-fidelity mockups</span>
           </li>
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Integrated Redis for cache storage, reducing repetitive database queries</span>
+            <span>Built React + TypeScript frontend with a responsive, accessible interface</span>
           </li>
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Containerized with Docker for consistent builds and Kubernetes deployment</span>
+            <span>Developed C# .NET backend API with full CRUD operations</span>
           </li>
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Built student-facing reservation pages and admin dashboards using Go + HTMX</span>
+            <span>Implemented cookie consent and security best practices for a production-ready app</span>
           </li>
           <li class="flex gap-3 text-gray-300 leading-relaxed">
             <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
-            <span>Consumed and wrote internal REST APIs to integrate with broader BYU IT systems</span>
+            <span>Worked in Scrum methodology with sprint planning, standups, and retrospectives</span>
+          </li>
+          <li class="flex gap-3 text-gray-300 leading-relaxed">
+            <span class="text-blue-400 flex-shrink-0 mt-1" aria-hidden="true">▸</span>
+            <span>Movie recommendations powered by a collaborative filtering engine built by teammates</span>
           </li>
         </ul>
       </div>
@@ -156,8 +166,8 @@
           Outcome
         </h2>
         <p class="text-gray-300 leading-relaxed">
-          Production system running on Kubernetes, serving real BYU students. Reduced infrastructure dependency
-          on AWS while improving maintainability with a strongly-typed Go codebase.
+          Delivered a fully functional movie recommendation platform with a polished Figma-designed UI,
+          secure cookie handling, and a complete full-stack implementation — on time and within Scrum sprints.
         </p>
       </div>
 
@@ -166,12 +176,19 @@
     <!-- Prev / Next -->
     <div class="border-t border-gray-700 bg-gray-800">
       <div class="max-w-4xl mx-auto px-6 py-8 flex justify-between items-center gap-4">
-        <div></div>
         <a href="/projects/pokemon-explorer/"
+           class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group max-w-xs">
+          <i class="fas fa-arrow-left flex-shrink-0" aria-hidden="true"></i>
+          <div class="text-left">
+            <div class="text-xs text-gray-500 uppercase tracking-wider">Previous</div>
+            <div class="font-medium group-hover:text-blue-400 transition-colors">PokéDex Explorer</div>
+          </div>
+        </a>
+        <a href="/projects/mission-nutrition/"
            class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group text-right max-w-xs ml-auto">
           <div>
             <div class="text-xs text-gray-500 uppercase tracking-wider">Next</div>
-            <div class="font-medium group-hover:text-blue-400 transition-colors">PokéDex Explorer</div>
+            <div class="font-medium group-hover:text-blue-400 transition-colors">Mission Nutrition</div>
           </div>
           <i class="fas fa-arrow-right flex-shrink-0" aria-hidden="true"></i>
         </a>
